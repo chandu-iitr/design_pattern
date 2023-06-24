@@ -98,10 +98,10 @@ class Store {
     MobileAlertObserver obs4;
 
     public:
-    Store() : obs1("xyz@gmail.com", &iphoneObservable),
-            obs2("nnn@gmail.com", &iphoneObservable),
-            obs3("mmm@gmail.com", &iphoneObservable),
-            obs4("cvcv", &iphoneObservable) {}
+    Store() :   obs1("xyz@gmail.com", &iphoneObservable),
+                obs2("nnn@gmail.com", &iphoneObservable),
+                obs3("mmm@gmail.com", &iphoneObservable),
+                obs4("cvcv", &iphoneObservable) {}
 
     void initialize() {
         iphoneObservable.add(&obs1);
