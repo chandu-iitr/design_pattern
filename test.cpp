@@ -1,59 +1,62 @@
+// #include<iostream>
+// using namespace std;
+
+// class Employee{
+//     public:
+//     int id;
+//     string name;
+
+//     Employee(int id){
+//         this->id = id;
+//     }
+    
+//     void displayJob(string job){
+//         cout << "Employee : " << job << endl;
+//     }
+
+// };
+
+// class Finance : public Employee{
+//     public :
+//     Finance(int id) : Employee(id) {}
+
+//     void displayJob(string job){
+//         cout << " Finance : " << job << endl;
+//     }
+// };
+
+// int main(){
+    
+//     Employee E1(2);
+//     Finance F1(3);
+//     E1.displayJob("asd") ;
+//     F1.displayJob("sdsf");
+//     return 0;
+// }
+
 #include <iostream>
+using namespace std;
 
-// Abstract base class for the strategy
-class Strategy {
+class Base1 {
 public:
-    virtual void execute() = 0;
-};
-
-// Concrete strategy implementations
-class ConcreteStrategyA : public Strategy {
-public:
-    void execute() override {
-        std::cout << "Executing ConcreteStrategyA" << std::endl;
+    void display() {
+        cout << "Base1::display()" << endl;
     }
 };
 
-class ConcreteStrategyB : public Strategy {
+class Base2 {
 public:
-    void execute() override {
-        std::cout << "Executing ConcreteStrategyB" << std::endl;
+    void display() {
+        cout << "Base2::display()" << endl;
     }
 };
 
-// Context class that uses the strategy
-class Context {
-private:
-    Strategy* strategy;
-
-public:
-    Context(Strategy* strategy) : strategy(strategy) {}
-
-    void setStrategy(Strategy* strategy) {
-        this->strategy = strategy;
-    }
-
-    void executeStrategy() {
-        strategy->execute();
-    }
+class Derived : public Base1, public Base2 {
 };
 
 int main() {
-    // Create strategies
-    ConcreteStrategyA strategyA;
-    ConcreteStrategyB strategyB;
-
-    // Create context with the initial strategy
-    Context context(&strategyA);
-
-    // Execute the current strategy
-    context.executeStrategy();
-
-    // Change the strategy dynamically
-    context.setStrategy(&strategyB);
-
-    // Execute the new strategy
-    context.executeStrategy();
+    Derived obj;
+    obj.Base2::display(); // Ambiguous function call
 
     return 0;
 }
